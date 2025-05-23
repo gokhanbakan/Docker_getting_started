@@ -56,7 +56,7 @@ RUN yarn build
 ###################################################
 FROM base AS backend-dev
 COPY backend/package.json backend/yarn.lock ./
-RUN yarn install --frozen-lockfile
+RUN yarn install --frozen-lockfile && yarn cache clean
 COPY backend/spec ./spec
 COPY backend/src ./src
 CMD ["yarn", "dev"]
