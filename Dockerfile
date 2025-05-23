@@ -56,8 +56,7 @@ RUN yarn build
 ###################################################
 FROM base AS backend-dev
 COPY backend/package.json backend/yarn.lock ./
-RUN --mount=type=cache,id=yarn,target=/usr/local/share/.cache/yarn \
-    yarn install --frozen-lockfile
+RUN yarn install --frozen-lockfile
 COPY backend/spec ./spec
 COPY backend/src ./src
 CMD ["yarn", "dev"]
